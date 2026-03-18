@@ -65,7 +65,7 @@
             to { opacity: 1; }
         }
 
-        /* ANA SAYFA TASARIMI (Logolu ve Yazılı) */
+        /* ANA SAYFA TASARIMI */
         .hero-section {
             display: flex;
             align-items: center;
@@ -103,10 +103,10 @@
             flex: 1;
             min-width: 300px;
             max-width: 500px;
-            height: 600px; /* Akışların yüksekliği */
+            height: 600px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow-y: auto; /* Taşan tweetleri kaydırmak için */
+            overflow-y: auto;
             border: 2px solid #5a3d2b;
             padding: 10px;
         }
@@ -153,49 +153,13 @@
     <header>
         <nav>
             <ul>
-                <li><a onclick="openTab('anasayfa')" class="tab-link active">Ana Sayfa</a></li>
-                <li><a onclick="openTab('ilkeler')" class="tab-link">İlkeler</a></li>
-                <li><a onclick="openTab('sosyal')" class="tab-link">Sosyal Medya</a></li>
-                <li><a onclick="openTab('yazilar')" class="tab-link">Yazılar-Polemik</a></li>
-                <li><a onclick="openTab('raporlar')" class="tab-link">Raporlar</a></li>
-                <li><a onclick="openTab('form')" class="tab-link">Katılım Formu</a></li>
+                <li><a onclick="openTab(event, 'anasayfa')" class="tab-link active">Ana Sayfa</a></li>
+                <li><a onclick="openTab(event, 'ilkeler')" class="tab-link">İlkeler</a></li>
+                <li><a onclick="openTab(event, 'sosyal')" class="tab-link">Sosyal Medya</a></li>
+                <li><a onclick="openTab(event, 'yazilar')" class="tab-link">Yazılar-Polemik</a></li>
+                <li><a onclick="openTab(event, 'raporlar')" class="tab-link">Raporlar</a></li>
+                <li><a onclick="openTab(event, 'form')" class="tab-link">Katılım Formu</a></li>
             </ul>
         </nav>
     </header>
-
-    <section id="anasayfa" class="tab-content active">
-        <div class="hero-section">
-            <div class="hero-text">
-                <span>WEB</span>
-                <span>SİTEMİZ</span>
-                <span>←</span>
-            </div>
-            
-            <div class="hero-logo">
-                <img src="1000109807.jpg" alt="Kim Hareketi Logosu">
-            </div>
-
-            <div class="hero-text">
-                <span style="color:transparent">.</span> 
-                <span style="color:transparent">.</span>
-                <span>→</span>
-                <span>YAYINDA</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="ilkeler" class="tab-content"><h2 style="text-align:center;">İlkeler</h2></section>
-    <section id="yazilar" class="tab-content"><h2 style="text-align:center;">Yazılar ve Polemik</h2></section>
-    <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
-
-    <section id="sosyal" class="tab-content">
-        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 20px;">GÜNCEL PAYLAŞIMLARIMIZ</h2>
-        
-        <div class="live-feed-container">
-            <div class="feed-box">
-                <a class="twitter-timeline" data-height="580" href="https://twitter.com/kimhareketi?ref_src=twsrc%5Etfw">Tweets by kimhareketi</a> 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-
-
-            
+    
