@@ -3,26 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kim Hareketi Web Sitesi</title>
+    <title>Toplumsal Hareket</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #c9b09d; color: #2c1a0f; }
-        header { background-color: #c9b09d; padding: 15px 0; border-bottom: 1px solid rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        nav ul { list-style-type: none; margin: 0; padding: 0; text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        nav ul li a { text-decoration: none; color: #2c1a0f; font-weight: 800; font-size: 13px; text-transform: uppercase; padding: 10px 5px; cursor: pointer; display: inline-block; transition: 0.3s; }
-        nav ul li a:hover, nav ul li a.active { color: #4a2d8a; border-bottom: 2px solid #4a2d8a; }
-        .tab-content { display: none; padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .hero-section { display: flex; align-items: center; justify-content: center; gap: 20px; background-color: #c5937a; padding: 40px 20px; margin-top: 30px; text-align: center; }
-        .hero-logo img { max-width: 200px; height: auto; border-radius: 10px; }
-        .live-feed-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
-        .feed-box { background-color: #fff; flex: 1; min-width: 300px; max-width: 450px; height: 500px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow-y: auto; border: 2px solid #5a3d2b; padding: 10px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .follow-btn { background-color: #4a2d8a; color: white; border: none; padding: 12px 30px; font-size: 14px; font-weight: bold; cursor: pointer; text-decoration: none; border-radius: 5px; margin-top: 15px; }
+        /* --- RENK PALETİ VE TEMEL AYARLAR --- */
+        :root {
+            --bg-color: #f8f9fa; /* Göz yormayan çok açık gri/beyaz */
+            --text-color: #212529; /* Keskin siyah/antrasit (Okunabilirlik için) */
+            --header-bg: #121212; /* Kurumsal ve ağırbaşlı tam siyah */
+            --accent-color: #b30000; /* Direnişçi Koyu Kırmızı / Bordo */
+            --border-color: #e9ecef;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- ÜST BİLGİ VE MENÜ (NAVİGASYON) --- */
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo-area {
+            text-align: center;
+            padding: 20px 0 10px 0;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo-area span {
+            color: var(--accent-color); /* Logodaki vurgu rengi */
+        }
+
+        nav {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto; /* Mobilde yana kaydırma özelliği */
+            white-space: nowrap; /* Mobilde yazıları alt satıra atmaz */
+            scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizle */
+        }
+        
+        nav ul::-webkit-scrollbar {
+            display: none; /* Chrome/Safari için kaydırma çubuğunu gizle */
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #adb5bd; /* Pasif sekme rengi (açık gri) */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 15px 25px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        /* Aktif Sekme Tasarımı */
+        nav ul li a.active {
+            color: white;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent-color); /* Altındaki kırmızı çizgi */
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* --- SEKME İÇERİKLERİ VE GEÇİŞ EFEKTLERİ --- */
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 60vh;
+        }
+
+        .tab-content {
+            display: none; /* Varsayılan olarak hepsi gizli */
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        /* İçerik aktif olduğunda çalışacak profesyonel animasyon */
+        .tab-content.active {
+            display: block;
+            animation: slideUpFade 0.5s ease forwards;
+        }
+
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2.section-title {
+            color: var(--header-bg);
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+
+        /* --- MOBİL UYUM (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            nav ul {
+                justify-content: flex-start; /* Mobilde sola yasla ki kaydırılabilsin */
+                padding: 0 10px;
+            }
+            nav ul li a {
+                padding: 15px 15px;
+                font-size: 13px;
+            }
+            .tab-content {
+                padding: 25px 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="logo-area">
+            Toplumsal <span>Hareket</span>
+        </div>
         <nav>
             <ul>
                 <li><a href="#anasayfa" class="tab-link active">Ana Sayfa</a></li>
@@ -35,54 +179,44 @@
         </nav>
     </header>
 
-    <section id="anasayfa" class="tab-content active">
-        <div class="hero-section">
-            <h2>WEB SİTEMİZ YAYINDA</h2>
-            <div class="hero-logo">
-                <img src="1000109807.jpg" alt="Kim Hareketi Logosu">
-            </div>
-            <p>Ana sayfa içeriği ve logonuz buraya eklendi.</p>
-        </div>
-    </section>
+    <main>
+        <section id="anasayfa" class="tab-content active">
+            <h2 class="section-title">Ana Sayfa</h2>
+            <p>Burası Türkiye çapında faaliyet gösteren hareketin vitrini olacak. Temiz, net ve vurucu mesajlar burada yer alacak. (İçerikleri daha sonra ekleyeceğiz.)</p>
+        </section>
 
-    <section id="ilkeler" class="tab-content"><h2 style="text-align:center;">İlkeler</h2></section>
-    <section id="yazilar" class="tab-content"><h2 style="text-align:center;">Yazılar ve Polemik</h2></section>
-    <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
+        <section id="ilkeler" class="tab-content">
+            <h2 class="section-title">İlkelerimiz</h2>
+            <p>Hareketin temel taşları, kuruluş felsefesi ve manifestosu burada madde madde veya akıcı bir metinle sergilenecek.</p>
+        </section>
 
-    <section id="sosyal" class="tab-content">
-        <h2 style="text-align:center; color:#5a3d2b;">SOSYAL MEDYA PAYLAŞIMLARI</h2>
-        <div class="live-feed-container">
-            <div class="feed-box">
-                <h3>X (Twitter)</h3>
-                <a class="twitter-timeline" data-height="400" href="https://twitter.com/kimhareketi">Tweets by kimhareketi</a> 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-            <div class="feed-box">
-                <h3 style="color:#d62976;">Instagram</h3>
-                <p>Instagram sayfamızı ziyaret edin:</p>
-                <a href="https://instagram.com/kimhareketi" target="_blank" class="follow-btn">Instagram'a Git</a>
-            </div>
-        </div>
-    </section>
+        <section id="sosyal" class="tab-content">
+            <h2 class="section-title">Sosyal Medya</h2>
+            <p>X (Twitter), Instagram veya diğer mecralardaki anlık paylaşımların, direniş ve eylem çağrılarının toplanma merkezi.</p>
+        </section>
 
-    <section id="form" class="tab-content"><h2 style="text-align:center;">Katılım Formu Yapım Aşamasında</h2></section>
+        <section id="yazilar" class="tab-content">
+            <h2 class="section-title">Yazılar ve Polemik</h2>
+            <p>Fikir yazıları, güncel tartışmalara verilen cevaplar ve entelektüel üretimin sergileneceği bölüm.</p>
+        </section>
+
+        <section id="raporlar" class="tab-content">
+            <h2 class="section-title">Raporlar</h2>
+            <p>Sahadan gelen veriler, toplumsal analizler ve hareketin yayınladığı resmi PDF/Metin formatındaki raporlar.</p>
+        </section>
+
+        <section id="form" class="tab-content">
+            <h2 class="section-title">Katılım Formu</h2>
+            <p>Harekete omuz vermek isteyenlerin iletişim bilgilerini ve mesajlarını güvenle iletebilecekleri profesyonel form alanı.</p>
+        </section>
+    </main>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const tabLinks = document.querySelectorAll('.tab-link');
             const tabContents = document.querySelectorAll('.tab-content');
 
-            tabLinks.forEach(function(link) {
+            tabLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    tabLinks.forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
-                    const targetId = this.getAttribute('href').substring(1);
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+                    e.preventDefault(); // Sayfa zıplamasını engelle
+                                      
