@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Sitemiz</title>
+    <title>Kim Hareketi Web Sitesi</title>
     <style>
-        /* GENEL TASARIM VE RENKLER (Görsellerdeki toprak tonları) */
+        /* GENEL TASARIM VE RENKLER */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #d8c3b1; /* Bej/Toprak arka plan */
-            color: #333;
+            background-color: #c9b09d; /* Orijinal Wix Toprak Rengi */
+            color: #2c1a0f;
         }
 
-        /* ÜST MENÜ (SEKMELER) */
+        /* ÜST MENÜ */
         header {
-            background-color: #d8c3b1;
-            padding: 20px 0;
-            border-bottom: 2px solid #5a3d2b;
+            background-color: #c9b09d;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -30,102 +30,146 @@
             text-align: center;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
         }
         nav ul li a {
             text-decoration: none;
-            color: #2c1a0f; /* Koyu kahverengi yazı */
-            font-weight: bold;
-            font-size: 16px;
+            color: #2c1a0f;
+            font-weight: 800; /* Daha kalın font */
+            font-size: 13px; /* Wix'teki gibi biraz daha küçük font */
             text-transform: uppercase;
-            padding: 10px 15px;
+            padding: 10px 5px;
             transition: 0.3s;
             cursor: pointer;
+            letter-spacing: 0.5px;
         }
         nav ul li a:hover, nav ul li a.active {
-            color: #553285; /* Vurgu için mor renk (Wix butonlarındaki gibi) */
-            border-bottom: 3px solid #553285;
+            color: #4a2d8a; /* Wix Mor Rengi */
+            border-bottom: 2px solid #4a2d8a;
         }
 
-        /* SAYFA İÇERİKLERİ (SEKMELERİN İÇİ) */
+        /* SEKME İÇERİKLERİ */
         .tab-content {
-            display: none; /* Varsayılan olarak tüm sayfalar gizli */
+            display: none;
             padding: 50px 20px;
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         .tab-content.active {
-            display: block; /* Sadece aktif sayfa görünür */
-            animation: fadeIn 0.5s;
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* SOSYAL MEDYA BÖLÜMÜ (YAN YANA KARTLAR) */
+        /* ANA SAYFA TASARIMI (Logolu ve Yazılı) */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background-color: #c5937a; /* Logodaki arka plan şeridi rengi */
+            padding: 40px 20px;
+            margin-top: 30px;
+        }
+        .hero-text {
+            font-size: 32px;
+            font-family: 'Times New Roman', Times, serif; /* Wix'teki fonta benzer */
+            color: #2c1a0f;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .hero-logo img {
+            max-width: 250px;
+            height: auto;
+            transform: rotate(-5deg); /* Logodaki o hafif eğik duruş */
+        }
+
+        /* SOSYAL MEDYA KARTLARI */
         .social-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
         .social-card {
-            background-color: #ebdaca;
+            background-color: #d1b8a5; /* Kartların rengi */
             flex: 1;
-            min-width: 300px;
-            height: 600px; /* Kaydırma alanı yüksekliği */
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            padding: 20px;
+            min-width: 280px;
+            max-width: 320px;
+            padding: 40px 20px;
             text-align: center;
-            overflow-y: auto; /* İçerik taşarsa kaydırma çubuğu çıkar */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
         }
-        .social-card h3 {
-            color: #5a3d2b;
+        
+        /* Kartların üstündeki görsel/ikon alanı (şimdilik daire) */
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #5a3d2b;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff; /* İkonlar gelene kadar beyaz kalsın */
         }
 
-        /* KATILIM FORMU TASARIMI */
-        .form-container {
-            background-color: #ebdaca;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #5a3d2b;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .social-card h3 {
+            color: #2c1a0f;
             font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
-        .submit-btn {
-            background-color: #553285; /* Mor Buton */
+        .social-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        .follow-btn {
+            background-color: #4a2d8a; /* Wix Moru Buton */
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 16px;
+            padding: 12px 30px;
+            font-size: 12px;
             font-weight: bold;
-            border-radius: 5px;
             cursor: pointer;
-            width: 100%;
+            text-decoration: none;
+            display: inline-block;
             transition: 0.3s;
         }
-        .submit-btn:hover {
-            background-color: #3b2061;
+        .follow-btn:hover {
+            background-color: #311c5c;
+        }
+
+        /* FORMLAR */
+        .form-container {
+            background-color: #d1b8a5;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px;}
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px; border: 1px solid #b39b88; 
+            box-sizing: border-box; background-color: #e4d3c5;
+        }
+        .submit-btn {
+            background-color: #4a2d8a; color: white; border: none; padding: 15px;
+            width: 100%; font-weight: bold; cursor: pointer;
         }
     </style>
 </head>
@@ -136,85 +180,101 @@
             <ul>
                 <li><a onclick="openTab('anasayfa')" class="tab-link active">Ana Sayfa</a></li>
                 <li><a onclick="openTab('ilkeler')" class="tab-link">İlkeler</a></li>
+                <li><a onclick="openTab('sosyal')" class="tab-link">Sosyal Medya</a></li>
                 <li><a onclick="openTab('yazilar')" class="tab-link">Yazılar-Polemik</a></li>
                 <li><a onclick="openTab('raporlar')" class="tab-link">Raporlar</a></li>
                 <li><a onclick="openTab('form')" class="tab-link">Katılım Formu</a></li>
-                <li><a onclick="openTab('sosyal')" class="tab-link">Sosyal Medya</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="anasayfa" class="tab-content active">
-        <h1 style="text-align:center; color:#5a3d2b;">WEB SİTEMİZ YAYINDA</h1>
-        <p style="text-align:center;">Ana sayfa içeriğini ve logonuzu buraya ekleyeceğiz. Bana içeriği daha sonra iletebilirsiniz.</p>
-    </section>
+        <div class="hero-section">
+            <div class="hero-text">
+                <span>WEB</span>
+                <span>SİTEMİZ</span>
+                <span>←</span>
+            </div>
+            
+            <div class="hero-logo">
+                <div style="width:250px; height:250px; background-color:#2c1a0f; color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; transform: rotate(-5deg);">
+                    BURAYA LOGO<br>RESMİ GELECEK
+                </div>
+            </div>
 
-    <section id="ilkeler" class="tab-content"><h2>İlkeler</h2><p>İçerik buraya gelecek.</p></section>
-    <section id="yazilar" class="tab-content"><h2>Yazılar ve Polemik</h2><p>İçerik buraya gelecek.</p></section>
-    <section id="raporlar" class="tab-content"><h2>Raporlar</h2><p>İçerik buraya gelecek.</p></section>
-
-    <section id="form" class="tab-content">
-        <div class="form-container">
-            <h2 style="text-align:center; color:#5a3d2b;">Katılım Formu</h2>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label>Adınız ve Soyadınız</label>
-                    <input type="text" placeholder="Adınızı giriniz" required>
-                </div>
-                <div class="form-group">
-                    <label>E-Posta Adresiniz</label>
-                    <input type="email" placeholder="ornek@mail.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Telefon Numaranız</label>
-                    <input type="tel" placeholder="05XX XXX XX XX">
-                </div>
-                <div class="form-group">
-                    <label>Mesajınız / Neden Katılmak İstiyorsunuz?</label>
-                    <textarea rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">FORMU GÖNDER</button>
-            </form>
+            <div class="hero-text">
+                <span style="color:transparent">.</span> <span style="color:transparent">.</span>
+                <span>→</span>
+                <span>YAYINDA</span>
+            </div>
         </div>
     </section>
 
+    <section id="ilkeler" class="tab-content"><h2 style="text-align:center;">İlkeler</h2></section>
+    <section id="yazilar" class="tab-content"><h2 style="text-align:center;">Yazılar ve Polemik</h2></section>
+    <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
+
     <section id="sosyal" class="tab-content">
-        <h2 style="text-align:center; color:#5a3d2b; margin-bottom: 40px;">SOSYAL MEDYA ÇALIŞMALARI</h2>
+        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 40px;">SOSYAL MEDYA ÇALIŞMALARI</h2>
+        
         <div class="social-container">
             <div class="social-card">
+                <div class="card-icon">X</div>
                 <h3>X (Twitter)</h3>
-                <p style="font-size: 14px; color: #666;">Aşağıdan güncel paylaşımlarımızı kaydırarak inceleyebilirsiniz.</p>
-                <a class="twitter-timeline" data-height="450" data-theme="light" href="https://twitter.com/X?ref_src=twsrc%5Etfw">Tweets by X</a> 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <p>X (Twitter) sitesinde süreçlere, aktörlere ve vakalara ilişkin paylaşımlar yapılmaktadır.</p>
+                <a href="#" class="follow-btn">TAKİP ET</a>
             </div>
 
             <div class="social-card">
+                <div class="card-icon">IG</div>
                 <h3>Instagram</h3>
-                <p style="font-size: 14px; color: #666;">Aşağıdan güncel paylaşımlarımızı kaydırarak inceleyebilirsiniz.</p>
-                <div style="background: #fff; border: 1px solid #ccc; padding: 20px; height: 400px; display:flex; align-items:center; justify-content:center; color:#999;">
-                    Bana Instagram profil linkinizi verdiğinizde buraya doğrudan kaydırılabilir Instagram kodunu gömeceğim.
-                </div>
+                <p>Instagram sitesinde süreçlere, aktörlere ve vakalara ilişkin paylaşımlar yapılmaktadır.</p>
+                <a href="#" class="follow-btn">TAKİP ET</a>
             </div>
+
+            <div class="social-card">
+                <div class="card-icon">YT</div>
+                <h3>YouTube</h3>
+                <p>YouTube'da fikirlere, aktörlere ve olaylara ilişkin özel video serileri yayınlanmaktadır.</p>
+                <a href="#" class="follow-btn">TAKİP ET</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="tab-content">
+        <div class="form-container">
+            <h2 style="text-align:center; margin-bottom: 30px;">Katılım Formu</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>Adınız ve Soyadınız</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>E-Posta Adresiniz</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mesajınız</label>
+                    <textarea rows="5"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">GÖNDER</button>
+            </form>
         </div>
     </section>
 
     <script>
         function openTab(tabName) {
-            // Tüm içerikleri gizle
             let contents = document.getElementsByClassName("tab-content");
             for (let i = 0; i < contents.length; i++) {
                 contents[i].classList.remove("active");
             }
-            // Tüm menü linklerinden "active" sınıfını kaldır
             let links = document.getElementsByClassName("tab-link");
             for (let i = 0; i < links.length; i++) {
                 links[i].classList.remove("active");
             }
-            // Tıklanan sekmeyi ve linki aktif yap
             document.getElementById(tabName).classList.add("active");
             event.currentTarget.classList.add("active");
         }
     </script>
-
 </body>
 </html>
