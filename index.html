@@ -10,7 +10,7 @@
             --bg-color: #f8f9fa;
             --text-color: #212529;
             --header-bg: #121212;
-            --accent-color: #b30000;
+            --accent-color: #b30000; /* Direnişçi Kırmızı */
             --border-color: #e9ecef;
         }
 
@@ -23,7 +23,7 @@
             line-height: 1.6;
         }
 
-        /* --- ÜST BİLGİ VE MENÜ (NAVİGASYON) --- */
+        /* --- ÜST BİLGİ VE MENÜ --- */
         header {
             background-color: var(--header-bg);
             color: white;
@@ -33,141 +33,85 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .logo-area {
-            text-align: center;
-            padding: 20px 0 10px 0;
-            font-size: 32px; /* Yazıyı biraz daha büyüttüm */
-            font-weight: 900;
-            letter-spacing: 3px;
-        }
+        .logo-area { text-align: center; padding: 20px 0 10px 0; font-size: 32px; font-weight: 900; letter-spacing: 3px; }
+        .logo-area span { color: var(--accent-color); }
 
-        .logo-area span {
-            color: var(--accent-color);
-        }
+        nav { border-top: 1px solid rgba(255,255,255,0.1); }
+        nav ul { list-style-type: none; margin: 0; padding: 0; display: flex; justify-content: center; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        nav ul::-webkit-scrollbar { display: none; }
+        nav ul li a { display: block; color: #adb5bd; text-decoration: none; font-weight: 600; font-size: 14px; text-transform: uppercase; padding: 15px 25px; letter-spacing: 1px; transition: 0.3s; position: relative; }
+        nav ul li a:hover, nav ul li a.active { color: white; }
+        nav ul li a.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background-color: var(--accent-color); }
 
-        nav {
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
+        /* --- SEKME İÇERİKLERİ --- */
+        main { max-width: 1000px; margin: 40px auto; padding: 0 20px; min-height: 60vh; }
+        .tab-content { display: none; background-color: white; padding: 60px 20px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.03); border: 1px solid var(--border-color); text-align: center; }
+        .tab-content.active { animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        nav ul::-webkit-scrollbar {
-            display: none;
-        }
+        .huge-title { color: var(--header-bg); font-size: 46px; font-weight: 900; margin-top: 20px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 4px solid var(--accent-color); display: inline-block; text-transform: uppercase; letter-spacing: 2px; }
+        .tab-desc { font-size: 18px; color: #555; max-width: 700px; margin: 0 auto 30px auto; }
 
-        nav ul li a {
-            display: block;
-            color: #adb5bd;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            padding: 15px 25px;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: white;
-        }
-
-        nav ul li a.active {
-            color: white;
-        }
-
-        nav ul li a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--accent-color);
-        }
-
-        /* --- SEKME İÇERİKLERİ VE DEV BAŞLIKLAR --- */
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 60vh;
-        }
-
-        .tab-content {
-            display: none; 
-            background-color: white;
-            padding: 60px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.03);
-            border: 1px solid var(--border-color);
-            text-align: center; /* İçeriği tam ortaya hizala */
-        }
-
-        .tab-content.active {
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* KOCAMAN ORTA BAŞLIK TASARIMI */
-        .huge-title {
-            color: var(--header-bg);
-            font-size: 46px; /* Dev boyut */
-            font-weight: 900;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 4px solid var(--accent-color);
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .tab-desc {
-            font-size: 18px;
-            color: #555;
-            max-width: 700px;
+        /* --- KATILIM FORMU TASARIMI --- */
+        .form-container {
+            max-width: 600px;
             margin: 0 auto;
+            text-align: left;
+            background-color: #fdfdfd;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
-        /* --- MOBİL UYUM --- */
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 14px; color: var(--header-bg); }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 5px rgba(179, 0, 0, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover { background-color: #8a0000; }
+
         @media (max-width: 768px) {
-            nav ul {
-                justify-content: flex-start;
-                padding: 0 10px;
-            }
-            nav ul li a {
-                padding: 15px 15px;
-                font-size: 13px;
-            }
-            .tab-content {
-                padding: 40px 15px;
-            }
-            .huge-title {
-                font-size: 32px; /* Mobilde ekrana sığması için biraz küçülttük */
-            }
+            nav ul { justify-content: flex-start; padding: 0 10px; }
+            nav ul li a { padding: 15px 15px; font-size: 13px; }
+            .tab-content { padding: 40px 15px; }
+            .huge-title { font-size: 32px; }
+            .form-container { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
-            KİM <span>HAREKETİ</span>
-        </div>
+        <div class="logo-area">KİM <span>HAREKETİ</span></div>
         <nav>
             <ul>
                 <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'anasayfa')" class="tab-link active">Ana Sayfa</a></li>
@@ -208,40 +152,57 @@
 
         <section id="form" class="tab-content">
             <h1 class="huge-title">KATILIM FORMU</h1>
-            <p class="tab-desc">Bu alana daha sonra katılım ve iletişim formu eklenecektir.</p>
+            <p class="tab-desc">Hareketimize omuz vermek için aşağıdaki formu doldurarak bize katılabilirsiniz.</p>
+            
+            <div class="form-container">
+                <form action="https://formsubmit.co/doktorebuzer@gmail.com" method="POST">
+                    
+                    <input type="hidden" name="_subject" value="Web Sitesinden Yeni Katılım Başvurusu!">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" name="Ad_Soyad" placeholder="Adınız ve Soyadınız" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefon Numarası</label>
+                        <input type="tel" name="Telefon" placeholder="05XX XXX XX XX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-posta Adresi</label>
+                        <input type="email" name="Email" placeholder="ornek@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Yaşadığınız Şehir</label>
+                        <input type="text" name="Sehir" placeholder="Örn: İstanbul" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mesleğiniz</label>
+                        <input type="text" name="Meslek" placeholder="Örn: Avukat, Öğrenci, Esnaf..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Öğrenim Durumu</label>
+                        <select name="Ogrenim_Durumu" required>
+                            <option value="" disabled selected>Lütfen seçiniz...</option>
+                            <option value="İlköğretim">İlköğretim</option>
+                            <option value="Lise">Lise</option>
+                            <option value="Ön Lisans">Ön Lisans</option>
+                            <option value="Lisans">Lisans</option>
+                            <option value="Yüksek Lisans">Yüksek Lisans</option>
+                            <option value="Doktora">Doktora</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">HAREKETE KATIL</button>
+                </form>
+            </div>
         </section>
     </main>
 
     <script>
-        function sekmeAc(olay, sekmeId) {
-            // Tüm içerikleri gizle
-            var icerikler = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < icerikler.length; i++) {
-                icerikler[i].style.display = "none";
-                icerikler[i].classList.remove("active");
-            }
-
-            // Menüdeki kırmızı çizgileri (active) temizle
-            var linkler = document.getElementsByClassName("tab-link");
-            for (var j = 0; j < linkler.length; j++) {
-                linkler[j].classList.remove("active");
-            }
-
-            // Seçilen sekmeyi göster
-            var secilenSekme = document.getElementById(sekmeId);
-            secilenSekme.style.display = "block";
-            
-            // Animasyon tetikleyici
-            setTimeout(function() {
-                secilenSekme.classList.add("active");
-            }, 10);
-
-            // Tıklanan butonu aktif yap
-            olay.currentTarget.classList.add("active");
-            
-            // Ekranı hafifçe yukarı kaydır
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
-</html>
+        
