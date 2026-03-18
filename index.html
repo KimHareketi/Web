@@ -5,148 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kim Hareketi Web Sitesi</title>
     <style>
-        /* GENEL TASARIM VE RENKLER */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #c9b09d; 
-            color: #2c1a0f;
-        }
-
-        /* ÜST MENÜ */
-        header {
-            background-color: #c9b09d;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #2c1a0f;
-            font-weight: 800; 
-            font-size: 13px; 
-            text-transform: uppercase;
-            padding: 10px 5px;
-            transition: 0.3s;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-            display: inline-block;
-        }
-        nav ul li a:hover, nav ul li a.active {
-            color: #4a2d8a; 
-            border-bottom: 2px solid #4a2d8a;
-        }
-
-        /* SEKME İÇERİKLERİ */
-        .tab-content {
-            display: none;
-            padding: 50px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ANA SAYFA TASARIMI */
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            background-color: #c5937a; 
-            padding: 40px 20px;
-            margin-top: 30px;
-        }
-        .hero-text {
-            font-size: 32px;
-            font-family: 'Times New Roman', Times, serif; 
-            color: #2c1a0f;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .hero-logo img {
-            max-width: 250px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        /* SOSYAL MEDYA KUTULARI */
-        .live-feed-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .feed-box {
-            background-color: #fff;
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            height: 600px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            overflow-y: auto;
-            border: 2px solid #5a3d2b;
-            padding: 10px;
-        }
-
-        .follow-btn {
-            background-color: #4a2d8a; 
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            margin-top: 15px;
-        }
-        .follow-btn:hover {
-            background-color: #311c5c;
-        }
-
-        /* FORMLAR */
-        .form-container {
-            background-color: #d1b8a5;
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; font-size: 14px;}
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 12px; border: 1px solid #b39b88; 
-            box-sizing: border-box; background-color: #e4d3c5;
-        }
-        .submit-btn {
-            background-color: #4a2d8a; color: white; border: none; padding: 15px;
-            width: 100%; font-weight: bold; cursor: pointer;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #c9b09d; color: #2c1a0f; }
+        header { background-color: #c9b09d; padding: 15px 0; border-bottom: 1px solid rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav ul { list-style-type: none; margin: 0; padding: 0; text-align: center; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        nav ul li a { text-decoration: none; color: #2c1a0f; font-weight: 800; font-size: 13px; text-transform: uppercase; padding: 10px 5px; cursor: pointer; display: inline-block; transition: 0.3s; }
+        nav ul li a:hover, nav ul li a.active { color: #4a2d8a; border-bottom: 2px solid #4a2d8a; }
+        .tab-content { display: none; padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .hero-section { display: flex; align-items: center; justify-content: center; gap: 20px; background-color: #c5937a; padding: 40px 20px; margin-top: 30px; text-align: center; }
+        .hero-logo img { max-width: 200px; height: auto; border-radius: 10px; }
+        .live-feed-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .feed-box { background-color: #fff; flex: 1; min-width: 300px; max-width: 450px; height: 500px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); overflow-y: auto; border: 2px solid #5a3d2b; padding: 10px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .follow-btn { background-color: #4a2d8a; color: white; border: none; padding: 12px 30px; font-size: 14px; font-weight: bold; cursor: pointer; text-decoration: none; border-radius: 5px; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -166,20 +37,11 @@
 
     <section id="anasayfa" class="tab-content active">
         <div class="hero-section">
-            <div class="hero-text">
-                <span>WEB</span>
-                <span>SİTEMİZ</span>
-                <span>←</span>
-            </div>
+            <h2>WEB SİTEMİZ YAYINDA</h2>
             <div class="hero-logo">
                 <img src="1000109807.jpg" alt="Kim Hareketi Logosu">
             </div>
-            <div class="hero-text">
-                <span style="color:transparent">.</span> 
-                <span style="color:transparent">.</span>
-                <span>→</span>
-                <span>YAYINDA</span>
-            </div>
+            <p>Ana sayfa içeriği ve logonuz buraya eklendi.</p>
         </div>
     </section>
 
@@ -188,58 +50,34 @@
     <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
 
     <section id="sosyal" class="tab-content">
-        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 20px;">GÜNCEL PAYLAŞIMLARIMIZ</h2>
+        <h2 style="text-align:center; color:#5a3d2b;">SOSYAL MEDYA PAYLAŞIMLARI</h2>
         <div class="live-feed-container">
             <div class="feed-box">
-                <a class="twitter-timeline" data-height="580" href="https://twitter.com/kimhareketi">Tweets by kimhareketi</a> 
+                <h3>X (Twitter)</h3>
+                <a class="twitter-timeline" data-height="400" href="https://twitter.com/kimhareketi">Tweets by kimhareketi</a> 
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
-            <div class="feed-box" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background-color:#fafafa;">
-                <h3 style="color:#d62976; font-size: 24px;">Instagram</h3>
-                <p style="padding: 0 20px; color:#555;">Instagram akışı yakında buraya eklenecektir.</p>
-                <a href="https://instagram.com/kimhareketi" class="follow-btn">Instagram'a Git</a>
+            <div class="feed-box">
+                <h3 style="color:#d62976;">Instagram</h3>
+                <p>Instagram sayfamızı ziyaret edin:</p>
+                <a href="https://instagram.com/kimhareketi" target="_blank" class="follow-btn">Instagram'a Git</a>
             </div>
         </div>
     </section>
 
-    <section id="form" class="tab-content">
-        <div class="form-container">
-            <h2 style="text-align:center; margin-bottom: 30px;">Katılım Formu</h2>
-            <form action="#" method="POST">
-                <div class="form-group"><label>Adınız ve Soyadınız</label><input type="text" required></div>
-                <div class="form-group"><label>E-Posta Adresiniz</label><input type="email" required></div>
-                <div class="form-group"><label>Mesajınız</label><textarea rows="5"></textarea></div>
-                <button type="submit" class="submit-btn">GÖNDER</button>
-            </form>
-        </div>
-    </section>
+    <section id="form" class="tab-content"><h2 style="text-align:center;">Katılım Formu Yapım Aşamasında</h2></section>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Menüdeki tüm linkleri bul
             const tabLinks = document.querySelectorAll('.tab-link');
-            // Tüm içerik sayfalarını bul
             const tabContents = document.querySelectorAll('.tab-content');
 
             tabLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
-                    // Sayfanın yukarı zıplamasını engelle
                     e.preventDefault();
-
-                    // 1. Tüm sayfalardan 'active' sınıfını kaldır (Gizle)
-                    tabContents.forEach(function(content) {
-                        content.classList.remove('active');
-                    });
-
-                    // 2. Menüdeki tüm linklerden 'active' sınıfını kaldır (Mor çizgiyi sil)
-                    tabLinks.forEach(function(item) {
-                        item.classList.remove('active');
-                    });
-
-                    // 3. Tıklanan linke mor çizgiyi ekle
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    tabLinks.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
-
-                    // 4. Tıklanan linkin href değerini (örn: #ilkeler) al ve o sayfayı göster
                     const targetId = this.getAttribute('href').substring(1);
                     document.getElementById(targetId).classList.add('active');
                 });
