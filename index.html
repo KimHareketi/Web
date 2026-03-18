@@ -43,6 +43,7 @@
             transition: 0.3s;
             cursor: pointer;
             letter-spacing: 0.5px;
+            display: inline-block;
         }
         nav ul li a:hover, nav ul li a.active {
             color: #4a2d8a; 
@@ -153,9 +154,97 @@
     <header>
         <nav>
             <ul>
-                <li><a href="javascript:void(0);" onclick="openTab(this, 'anasayfa')" class="tab-link active">Ana Sayfa</a></li>
-                <li><a href="javascript:void(0);" onclick="openTab(this, 'ilkeler')" class="tab-link">İlkeler</a></li>
-                <li><a href="javascript:void(0);" onclick="openTab(this, 'sosyal')" class="tab-link">Sosyal Medya</a></li>
-                <li><a href="javascript:void(0);" onclick="openTab(this, 'yazilar')" class="tab-link">Yazılar-Polemik</a></li>
-                <li><a href="javascript:void(0);" onclick="openTab(this, 'raporlar')" class="tab-link">R
-                    
+                <li><a href="#anasayfa" class="tab-link active">Ana Sayfa</a></li>
+                <li><a href="#ilkeler" class="tab-link">İlkeler</a></li>
+                <li><a href="#sosyal" class="tab-link">Sosyal Medya</a></li>
+                <li><a href="#yazilar" class="tab-link">Yazılar-Polemik</a></li>
+                <li><a href="#raporlar" class="tab-link">Raporlar</a></li>
+                <li><a href="#form" class="tab-link">Katılım Formu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="anasayfa" class="tab-content active">
+        <div class="hero-section">
+            <div class="hero-text">
+                <span>WEB</span>
+                <span>SİTEMİZ</span>
+                <span>←</span>
+            </div>
+            <div class="hero-logo">
+                <img src="1000109807.jpg" alt="Kim Hareketi Logosu">
+            </div>
+            <div class="hero-text">
+                <span style="color:transparent">.</span> 
+                <span style="color:transparent">.</span>
+                <span>→</span>
+                <span>YAYINDA</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="ilkeler" class="tab-content"><h2 style="text-align:center;">İlkeler</h2></section>
+    <section id="yazilar" class="tab-content"><h2 style="text-align:center;">Yazılar ve Polemik</h2></section>
+    <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
+
+    <section id="sosyal" class="tab-content">
+        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 20px;">GÜNCEL PAYLAŞIMLARIMIZ</h2>
+        <div class="live-feed-container">
+            <div class="feed-box">
+                <a class="twitter-timeline" data-height="580" href="https://twitter.com/kimhareketi">Tweets by kimhareketi</a> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="feed-box" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background-color:#fafafa;">
+                <h3 style="color:#d62976; font-size: 24px;">Instagram</h3>
+                <p style="padding: 0 20px; color:#555;">Instagram akışı yakında buraya eklenecektir.</p>
+                <a href="https://instagram.com/kimhareketi" class="follow-btn">Instagram'a Git</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="tab-content">
+        <div class="form-container">
+            <h2 style="text-align:center; margin-bottom: 30px;">Katılım Formu</h2>
+            <form action="#" method="POST">
+                <div class="form-group"><label>Adınız ve Soyadınız</label><input type="text" required></div>
+                <div class="form-group"><label>E-Posta Adresiniz</label><input type="email" required></div>
+                <div class="form-group"><label>Mesajınız</label><textarea rows="5"></textarea></div>
+                <button type="submit" class="submit-btn">GÖNDER</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Menüdeki tüm linkleri bul
+            const tabLinks = document.querySelectorAll('.tab-link');
+            // Tüm içerik sayfalarını bul
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    // Sayfanın yukarı zıplamasını engelle
+                    e.preventDefault();
+
+                    // 1. Tüm sayfalardan 'active' sınıfını kaldır (Gizle)
+                    tabContents.forEach(function(content) {
+                        content.classList.remove('active');
+                    });
+
+                    // 2. Menüdeki tüm linklerden 'active' sınıfını kaldır (Mor çizgiyi sil)
+                    tabLinks.forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+
+                    // 3. Tıklanan linke mor çizgiyi ekle
+                    this.classList.add('active');
+
+                    // 4. Tıklanan linkin href değerini (örn: #ilkeler) al ve o sayfayı göster
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
