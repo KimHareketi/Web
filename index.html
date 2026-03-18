@@ -10,7 +10,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #c9b09d; /* Orijinal Wix Toprak Rengi */
+            background-color: #c9b09d; 
             color: #2c1a0f;
         }
 
@@ -36,8 +36,8 @@
         nav ul li a {
             text-decoration: none;
             color: #2c1a0f;
-            font-weight: 800; /* Daha kalın font */
-            font-size: 13px; /* Wix'teki gibi biraz daha küçük font */
+            font-weight: 800; 
+            font-size: 13px; 
             text-transform: uppercase;
             padding: 10px 5px;
             transition: 0.3s;
@@ -45,7 +45,7 @@
             letter-spacing: 0.5px;
         }
         nav ul li a:hover, nav ul li a.active {
-            color: #4a2d8a; /* Wix Mor Rengi */
+            color: #4a2d8a; 
             border-bottom: 2px solid #4a2d8a;
         }
 
@@ -71,13 +71,13 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
-            background-color: #c5937a; /* Logodaki arka plan şeridi rengi */
+            background-color: #c5937a; 
             padding: 40px 20px;
             margin-top: 30px;
         }
         .hero-text {
             font-size: 32px;
-            font-family: 'Times New Roman', Times, serif; /* Wix'teki fonta benzer */
+            font-family: 'Times New Roman', Times, serif; 
             color: #2c1a0f;
             text-align: center;
             display: flex;
@@ -87,58 +87,32 @@
         .hero-logo img {
             max-width: 250px;
             height: auto;
-            transform: rotate(-5deg); /* Logodaki o hafif eğik duruş */
+            border-radius: 10px;
         }
 
-        /* SOSYAL MEDYA KARTLARI */
-        .social-container {
+        /* SOSYAL MEDYA CANLI AKIŞ KUTULARI */
+        .live-feed-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 40px;
+            margin-top: 20px;
         }
-        .social-card {
-            background-color: #d1b8a5; /* Kartların rengi */
+        .feed-box {
+            background-color: #fff;
             flex: 1;
-            min-width: 280px;
-            max-width: 320px;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
-        
-        /* Kartların üstündeki görsel/ikon alanı (şimdilik daire) */
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid #5a3d2b;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff; /* İkonlar gelene kadar beyaz kalsın */
+            min-width: 300px;
+            max-width: 500px;
+            height: 600px; /* Akışların yüksekliği */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow-y: auto; /* Taşan tweetleri kaydırmak için */
+            border: 2px solid #5a3d2b;
+            padding: 10px;
         }
 
-        .social-card h3 {
-            color: #2c1a0f;
-            font-size: 16px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .social-card p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #444;
-            margin-bottom: 30px;
-        }
         .follow-btn {
-            background-color: #4a2d8a; /* Wix Moru Buton */
+            background-color: #4a2d8a; 
             color: white;
             border: none;
             padding: 12px 30px;
@@ -148,6 +122,7 @@
             text-decoration: none;
             display: inline-block;
             transition: 0.3s;
+            margin-top: 15px;
         }
         .follow-btn:hover {
             background-color: #311c5c;
@@ -197,13 +172,12 @@
             </div>
             
             <div class="hero-logo">
-                <div style="width:250px; height:250px; background-color:#2c1a0f; color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; transform: rotate(-5deg);">
-                    BURAYA LOGO<br>RESMİ GELECEK
-                </div>
+                <img src="1000109807.jpg" alt="Kim Hareketi Logosu">
             </div>
 
             <div class="hero-text">
-                <span style="color:transparent">.</span> <span style="color:transparent">.</span>
+                <span style="color:transparent">.</span> 
+                <span style="color:transparent">.</span>
                 <span>→</span>
                 <span>YAYINDA</span>
             </div>
@@ -215,66 +189,13 @@
     <section id="raporlar" class="tab-content"><h2 style="text-align:center;">Raporlar</h2></section>
 
     <section id="sosyal" class="tab-content">
-        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 40px;">SOSYAL MEDYA ÇALIŞMALARI</h2>
+        <h2 style="text-align:center; font-weight: normal; font-size: 32px; margin-bottom: 20px;">GÜNCEL PAYLAŞIMLARIMIZ</h2>
         
-        <div class="social-container">
-            <div class="social-card">
-                <div class="card-icon">X</div>
-                <h3>X (Twitter)</h3>
-                <p>X (Twitter) sitesinde süreçlere, aktörlere ve vakalara ilişkin paylaşımlar yapılmaktadır.</p>
-                <a href="#" class="follow-btn">TAKİP ET</a>
+        <div class="live-feed-container">
+            <div class="feed-box">
+                <a class="twitter-timeline" data-height="580" href="https://twitter.com/kimhareketi?ref_src=twsrc%5Etfw">Tweets by kimhareketi</a> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
 
-            <div class="social-card">
-                <div class="card-icon">IG</div>
-                <h3>Instagram</h3>
-                <p>Instagram sitesinde süreçlere, aktörlere ve vakalara ilişkin paylaşımlar yapılmaktadır.</p>
-                <a href="#" class="follow-btn">TAKİP ET</a>
-            </div>
 
-            <div class="social-card">
-                <div class="card-icon">YT</div>
-                <h3>YouTube</h3>
-                <p>YouTube'da fikirlere, aktörlere ve olaylara ilişkin özel video serileri yayınlanmaktadır.</p>
-                <a href="#" class="follow-btn">TAKİP ET</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="form" class="tab-content">
-        <div class="form-container">
-            <h2 style="text-align:center; margin-bottom: 30px;">Katılım Formu</h2>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label>Adınız ve Soyadınız</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>E-Posta Adresiniz</label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Mesajınız</label>
-                    <textarea rows="5"></textarea>
-                </div>
-                <button type="submit" class="submit-btn">GÖNDER</button>
-            </form>
-        </div>
-    </section>
-
-    <script>
-        function openTab(tabName) {
-            let contents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("active");
-            }
-            let links = document.getElementsByClassName("tab-link");
-            for (let i = 0; i < links.length; i++) {
-                links[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active");
-            event.currentTarget.classList.add("active");
-        }
-    </script>
-</body>
-</html>
+            
