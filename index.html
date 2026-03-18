@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toplumsal Hareket</title>
+    <title>Kim Hareketi</title>
     <style>
         /* --- RENK PALETİ VE TEMEL AYARLAR --- */
         :root {
-            --bg-color: #f8f9fa; /* Göz yormayan çok açık gri/beyaz */
-            --text-color: #212529; /* Keskin siyah/antrasit (Okunabilirlik için) */
-            --header-bg: #121212; /* Kurumsal ve ağırbaşlı tam siyah */
-            --accent-color: #b30000; /* Direnişçi Koyu Kırmızı / Bordo */
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --header-bg: #121212;
+            --accent-color: #b30000;
             --border-color: #e9ecef;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
@@ -36,14 +36,13 @@
         .logo-area {
             text-align: center;
             padding: 20px 0 10px 0;
-            font-size: 24px;
+            font-size: 32px; /* Yazıyı biraz daha büyüttüm */
             font-weight: 900;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .logo-area span {
-            color: var(--accent-color); /* Logodaki vurgu rengi */
+            color: var(--accent-color);
         }
 
         nav {
@@ -56,36 +55,32 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            overflow-x: auto; /* Mobilde yana kaydırma özelliği */
-            white-space: nowrap; /* Mobilde yazıları alt satıra atmaz */
-            scrollbar-width: none; /* Firefox için kaydırma çubuğunu gizle */
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
         
         nav ul::-webkit-scrollbar {
-            display: none; /* Chrome/Safari için kaydırma çubuğunu gizle */
-        }
-
-        nav ul li {
-            position: relative;
+            display: none;
         }
 
         nav ul li a {
             display: block;
-            color: #adb5bd; /* Pasif sekme rengi (açık gri) */
+            color: #adb5bd;
             text-decoration: none;
             font-weight: 600;
             font-size: 14px;
             text-transform: uppercase;
             padding: 15px 25px;
             letter-spacing: 1px;
-            transition: color 0.3s ease;
+            transition: 0.3s;
+            position: relative;
         }
 
         nav ul li a:hover {
             color: white;
         }
 
-        /* Aktif Sekme Tasarımı */
         nav ul li a.active {
             color: white;
         }
@@ -97,11 +92,10 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background-color: var(--accent-color); /* Altındaki kırmızı çizgi */
-            border-radius: 4px 4px 0 0;
+            background-color: var(--accent-color);
         }
 
-        /* --- SEKME İÇERİKLERİ VE GEÇİŞ EFEKTLERİ --- */
+        /* --- SEKME İÇERİKLERİ VE DEV BAŞLIKLAR --- */
         main {
             max-width: 1000px;
             margin: 40px auto;
@@ -110,45 +104,49 @@
         }
 
         .tab-content {
-            display: none; /* Varsayılan olarak hepsi gizli */
+            display: none; 
             background-color: white;
-            padding: 40px;
+            padding: 60px 20px;
             border-radius: 8px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.03);
             border: 1px solid var(--border-color);
+            text-align: center; /* İçeriği tam ortaya hizala */
         }
 
-        /* İçerik aktif olduğunda çalışacak profesyonel animasyon */
         .tab-content.active {
-            display: block;
-            animation: slideUpFade 0.5s ease forwards;
+            animation: fadeIn 0.4s ease forwards;
         }
 
-        @keyframes slideUpFade {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        h2.section-title {
+        /* KOCAMAN ORTA BAŞLIK TASARIMI */
+        .huge-title {
             color: var(--header-bg);
-            font-size: 28px;
-            margin-top: 0;
+            font-size: 46px; /* Dev boyut */
+            font-weight: 900;
+            margin-top: 20px;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-color);
+            border-bottom: 4px solid var(--accent-color);
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* --- MOBİL UYUM (RESPONSIVE) --- */
+        .tab-desc {
+            font-size: 18px;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- MOBİL UYUM --- */
         @media (max-width: 768px) {
             nav ul {
-                justify-content: flex-start; /* Mobilde sola yasla ki kaydırılabilsin */
+                justify-content: flex-start;
                 padding: 0 10px;
             }
             nav ul li a {
@@ -156,7 +154,10 @@
                 font-size: 13px;
             }
             .tab-content {
-                padding: 25px 15px;
+                padding: 40px 15px;
+            }
+            .huge-title {
+                font-size: 32px; /* Mobilde ekrana sığması için biraz küçülttük */
             }
         }
     </style>
@@ -165,58 +166,82 @@
 
     <header>
         <div class="logo-area">
-            Toplumsal <span>Hareket</span>
+            KİM <span>HAREKETİ</span>
         </div>
         <nav>
             <ul>
-                <li><a href="#anasayfa" class="tab-link active">Ana Sayfa</a></li>
-                <li><a href="#ilkeler" class="tab-link">İlkeler</a></li>
-                <li><a href="#sosyal" class="tab-link">Sosyal Medya</a></li>
-                <li><a href="#yazilar" class="tab-link">Yazılar-Polemik</a></li>
-                <li><a href="#raporlar" class="tab-link">Raporlar</a></li>
-                <li><a href="#form" class="tab-link">Katılım Formu</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'anasayfa')" class="tab-link active">Ana Sayfa</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'ilkeler')" class="tab-link">İlkeler</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'sosyal')" class="tab-link">Sosyal Medya</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'yazilar')" class="tab-link">Yazılar-Polemik</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'raporlar')" class="tab-link">Raporlar</a></li>
+                <li><a href="javascript:void(0);" onclick="sekmeAc(event, 'form')" class="tab-link">Katılım Formu</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="anasayfa" class="tab-content active">
-            <h2 class="section-title">Ana Sayfa</h2>
-            <p>Burası Türkiye çapında faaliyet gösteren hareketin vitrini olacak. Temiz, net ve vurucu mesajlar burada yer alacak. (İçerikleri daha sonra ekleyeceğiz.)</p>
+        <section id="anasayfa" class="tab-content active" style="display:block;">
+            <h1 class="huge-title">ANA SAYFA</h1>
+            <p class="tab-desc">Bu alana daha sonra ana sayfa içerikleri eklenecektir.</p>
         </section>
 
         <section id="ilkeler" class="tab-content">
-            <h2 class="section-title">İlkelerimiz</h2>
-            <p>Hareketin temel taşları, kuruluş felsefesi ve manifestosu burada madde madde veya akıcı bir metinle sergilenecek.</p>
+            <h1 class="huge-title">İLKELER</h1>
+            <p class="tab-desc">Bu alana daha sonra ilkelerimiz eklenecektir.</p>
         </section>
 
         <section id="sosyal" class="tab-content">
-            <h2 class="section-title">Sosyal Medya</h2>
-            <p>X (Twitter), Instagram veya diğer mecralardaki anlık paylaşımların, direniş ve eylem çağrılarının toplanma merkezi.</p>
+            <h1 class="huge-title">SOSYAL MEDYA</h1>
+            <p class="tab-desc">Bu alana daha sonra sosyal medya akışları eklenecektir.</p>
         </section>
 
         <section id="yazilar" class="tab-content">
-            <h2 class="section-title">Yazılar ve Polemik</h2>
-            <p>Fikir yazıları, güncel tartışmalara verilen cevaplar ve entelektüel üretimin sergileneceği bölüm.</p>
+            <h1 class="huge-title">YAZILAR VE POLEMİK</h1>
+            <p class="tab-desc">Bu alana daha sonra makaleler ve yazılar eklenecektir.</p>
         </section>
 
         <section id="raporlar" class="tab-content">
-            <h2 class="section-title">Raporlar</h2>
-            <p>Sahadan gelen veriler, toplumsal analizler ve hareketin yayınladığı resmi PDF/Metin formatındaki raporlar.</p>
+            <h1 class="huge-title">RAPORLAR</h1>
+            <p class="tab-desc">Bu alana daha sonra saha raporları eklenecektir.</p>
         </section>
 
         <section id="form" class="tab-content">
-            <h2 class="section-title">Katılım Formu</h2>
-            <p>Harekete omuz vermek isteyenlerin iletişim bilgilerini ve mesajlarını güvenle iletebilecekleri profesyonel form alanı.</p>
+            <h1 class="huge-title">KATILIM FORMU</h1>
+            <p class="tab-desc">Bu alana daha sonra katılım ve iletişim formu eklenecektir.</p>
         </section>
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const tabLinks = document.querySelectorAll('.tab-link');
-            const tabContents = document.querySelectorAll('.tab-content');
+        function sekmeAc(olay, sekmeId) {
+            // Tüm içerikleri gizle
+            var icerikler = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < icerikler.length; i++) {
+                icerikler[i].style.display = "none";
+                icerikler[i].classList.remove("active");
+            }
 
-            tabLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Sayfa zıplamasını engelle
-                                      
+            // Menüdeki kırmızı çizgileri (active) temizle
+            var linkler = document.getElementsByClassName("tab-link");
+            for (var j = 0; j < linkler.length; j++) {
+                linkler[j].classList.remove("active");
+            }
+
+            // Seçilen sekmeyi göster
+            var secilenSekme = document.getElementById(sekmeId);
+            secilenSekme.style.display = "block";
+            
+            // Animasyon tetikleyici
+            setTimeout(function() {
+                secilenSekme.classList.add("active");
+            }, 10);
+
+            // Tıklanan butonu aktif yap
+            olay.currentTarget.classList.add("active");
+            
+            // Ekranı hafifçe yukarı kaydır
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
